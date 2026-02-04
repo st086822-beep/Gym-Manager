@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 interface SidebarProps {
   activeTab: string;
   onTabChange: (tab: string) => void;
+  onLogout?: () => void;
 }
 
 const navItems = [
@@ -14,7 +15,7 @@ const navItems = [
   { id: "settings", label: "Settings", icon: Settings },
 ];
 
-export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
+export function Sidebar({ activeTab, onTabChange, onLogout }: SidebarProps) {
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 bg-sidebar flex flex-col">
       {/* Logo */}
@@ -50,7 +51,10 @@ export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
 
       {/* Footer */}
       <div className="px-4 py-4 border-t border-sidebar-border">
-        <button className="sidebar-nav-item w-full text-destructive/80 hover:text-destructive hover:bg-destructive/10">
+        <button 
+          onClick={onLogout}
+          className="sidebar-nav-item w-full text-destructive/80 hover:text-destructive hover:bg-destructive/10"
+        >
           <LogOut className="w-5 h-5" />
           <span className="font-medium">Logout</span>
         </button>

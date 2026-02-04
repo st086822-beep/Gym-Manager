@@ -1,14 +1,38 @@
 import { UserPlus, CreditCard, Calendar, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+interface QuickActionsProps {
+  onNewMember: () => void;
+  onRecordPayment: () => void;
+  onBookSession: () => void;
+  onSendReminder: () => void;
+}
+
 const actions = [
-  { label: "New Member", icon: UserPlus, description: "Register a new member" },
-  { label: "Record Payment", icon: CreditCard, description: "Log a payment" },
-  { label: "Book Session", icon: Calendar, description: "Schedule a session" },
-  { label: "Send Reminder", icon: Bell, description: "Notify members" },
+  { id: "new-member", label: "New Member", icon: UserPlus, description: "Register a new member" },
+  { id: "record-payment", label: "Record Payment", icon: CreditCard, description: "Log a payment" },
+  { id: "book-session", label: "Book Session", icon: Calendar, description: "Schedule a session" },
+  { id: "send-reminder", label: "Send Reminder", icon: Bell, description: "Notify members" },
 ];
 
-export function QuickActions() {
+export function QuickActions({ onNewMember, onRecordPayment, onBookSession, onSendReminder }: QuickActionsProps) {
+  const handleClick = (id: string) => {
+    switch (id) {
+      case "new-member":
+        onNewMember();
+        break;
+      case "record-payment":
+        onRecordPayment();
+        break;
+      case "book-session":
+        onBookSession();
+        break;
+      case "send-reminder":
+        onSendReminder();
+        break;
+    }
+  };
+
   return (
     <div className="bg-card rounded-xl border shadow-card p-6 animate-fade-in">
       <h2 className="text-lg font-bold text-foreground mb-4">Quick Actions</h2>
@@ -17,8 +41,9 @@ export function QuickActions() {
           const Icon = action.icon;
           return (
             <Button
-              key={action.label}
+              key={action.id}
               variant="outline"
+              onClick={() => handleClick(action.id)}
               className="h-auto flex-col items-start gap-2 p-4 hover:border-primary/50 hover:bg-primary/5 transition-all"
             >
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
