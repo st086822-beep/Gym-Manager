@@ -4,6 +4,8 @@
 
 **Live site (after first deploy)**: https://st086822-beep.github.io/xampp-fixer/
 
+**Note:** This repository contains a minor project submitted to **Renaissance University**.
+
 ## How can I edit this code?
 
 There are several ways of editing your application.
