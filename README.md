@@ -1,22 +1,16 @@
-# Welcome to your Lovable project
+# XAMPP Fixer
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**Live site (after first deploy)**: https://st086822-beep.github.io/xampp-fixer/
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
 **Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+If you want to work locally using your own IDE, you can clone this repo and push changes.
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -30,7 +24,7 @@ git clone <YOUR_GIT_URL>
 cd <YOUR_PROJECT_NAME>
 
 # Step 3: Install the necessary dependencies.
-npm i
+npm install
 
 # Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
@@ -44,11 +38,7 @@ npm run dev
 
 **Use GitHub Codespaces**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Click on the "Code" button and select the "Codespaces" tab to launch a codespace.
 
 ## What technologies are used for this project?
 
@@ -60,14 +50,22 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Deploying to GitHub Pages ✅
 
-## Can I connect a custom domain to my Lovable project?
+A GitHub Actions workflow is included at `.github/workflows/deploy.yml` which will build the project and publish the `dist/` output to GitHub Pages automatically when you push to `main` or trigger the workflow manually.
 
-Yes, you can!
+To deploy locally (optional):
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```sh
+# Build
+npm run build
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+# Preview the built site
+npm run preview
+```
+
+After the workflow runs, your site will be available at: `https://st086822-beep.github.io/xampp-fixer/` (it may take a minute after the workflow completes).
+
+If you want to use a custom domain, configure it in the repository Pages settings in GitHub and update your DNS records accordingly.
