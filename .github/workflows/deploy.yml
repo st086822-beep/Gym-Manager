@@ -27,9 +27,25 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          cname: false
+          ref: gh-pages
+          path: gh-pages-dir
+
+      - name: Copy build to gh-pages
+        run: |
+          cd gh-pages-dir
+          rm -rf * .gitignore
+          cp -r ../dist/* .
+          echo "dist deployed" > .deployed
+          
+      - name: Commit and push to gh-pages
+        run: |
+          cd gh-pages-dir
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "deploy: build $(date +%s)" || echo "no changes"
+          git push
+
