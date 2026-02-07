@@ -36,9 +36,12 @@ jobs:
       - name: Copy build to gh-pages
         run: |
           cd gh-pages-dir
-          rm -rf * .gitignore
+          # Remove all files except .git
+          find . -maxdepth 1 -not -name '.git' -exec rm -rf {} + 2>/dev/null || true
+          # Copy fresh dist
           cp -r ../dist/* .
           echo "dist deployed" > .deployed
+          ls -la
           
       - name: Commit and push to gh-pages
         run: |
