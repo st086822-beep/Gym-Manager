@@ -1,7 +1,7 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "gym-manager",
   "private": true,
-  "homepage": "https://st086822-beep.github.io/xampp-fixer/",
+  "homepage": "https://st086822-beep.github.io/Gym-Manager/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

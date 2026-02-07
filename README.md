@@ -1,8 +1,8 @@
-# XAMPP Fixer
+# Gym Manager
 
 ## Project info
 
-**Live site (after first deploy)**: https://st086822-beep.github.io/xampp-fixer/
+**Live site**: https://st086822-beep.github.io/Gym-Manager/
 
 **Note:** This repository contains a minor project submitted to **Renaissance University**.
 
