@@ -27,28 +27,19 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Checkout gh-pages
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: gh-pages-dir
-
-      - name: Copy build to gh-pages
+      - name: Deploy to GitHub Pages
         run: |
-          cd gh-pages-dir
-          # Remove all files except .git
-          find . -maxdepth 1 -not -name '.git' -exec rm -rf {} + 2>/dev/null || true
-          # Copy fresh dist
-          cp -r ../dist/* .
-          echo "dist deployed" > .deployed
-          ls -la
-          
-      - name: Commit and push to gh-pages
-        run: |
-          cd gh-pages-dir
+          # Configure git
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add -A
-          git commit -m "deploy: build $(date +%s)" || echo "no changes"
-          git push
+          
+          # Copy dist files to root  
+          cp dist/index.html .
+          cp -r dist/assets .
+          
+          # Commit and push
+          git add index.html assets/
+          git commit -m "deploy: site build $(date +%s)" || echo "no changes"
+          git push origin main
+
 
